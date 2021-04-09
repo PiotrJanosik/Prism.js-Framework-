@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang ="pl">
+<head>
+<meta charset="utf-8">
+<link href="prism.css" rel="stylesheet" />
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,300&display=swap" rel="stylesheet"> 
+
+
+<style type ="text/css">
+   
+   
+pre
+{
+position:relative;
+width:1000px !important;
+height:400px !important;
+top:100px;
+margin:0 !important;
+border:2px solid red;
+
+}
+
+code
+{
+position : relative;
+
+}
+
+
+
+
+
+
+
+
+
+</style>
+
+
+</head>
+
+<body>
+<script src="prism.js"></script>
+<pre  class="language-csharp" data-src="myfile.js" data-download-link ="" data-download-link-label="Download this file" >
+
+<code  >  
+
+
+public static string Konwerter_Adresow(int podany_numer_kolumny, int numer_wiersza)
+
+                {// poczatek funkcji konwertera 
+                int a = 0;
+                int b = 0;
+                int f = 0;
+                int y = 0;
+                int x = 0;
+                int calkowity = 0;//
+                int reszta_2 = 0;
+                int liczba_1 = 0;
+                int liczba_2 = 0;
+                string pierwsza_cyfra = "";
+                string druga_cyfra = "";
+                string trzecia_cyfra = "";
+
+  //Console.WriteLine(Environment.NewLine + Environment.NewLine + Environment.NewLine + Environment.NewLine);
+
+
+               if ((0 < podany_numer_kolumny) && (podany_numer_kolumny < 27))////// KOD GDY PODANO NUMER KOLUMNY  OD 1 DO 26 ...DLA JEDNEJ  LITERY//////
+
+                {
+                 pierwsza_cyfra = Convert.ToChar(64 + podany_numer_kolumny).ToString();
+                }
+
+                else
+
+                if ((26 < podany_numer_kolumny) && (podany_numer_kolumny < 703))  ///////////////////KOD DLA DWÓCH LITEREK///////////////////
+
+
+                {
+
+
+
+
+                    if ((podany_numer_kolumny % 26) == 0)
+                    {
+
+                        f = (podany_numer_kolumny / 26) - 2;
+                        y = podany_numer_kolumny % 26;
+                        x = podany_numer_kolumny / 26;
+                        pierwsza_cyfra = Convert.ToChar(65 + f).ToString();
+                        druga_cyfra = Convert.ToChar(65 + 25).ToString();
+                     }
+
+
+
+
+                    else
+                    {
+                        b = 26;
+                        f = (podany_numer_kolumny / b) - 1;
+                        y = podany_numer_kolumny % 26;
+                        x = podany_numer_kolumny / 26;
+                        pierwsza_cyfra = Convert.ToChar(65 + f).ToString();
+                        druga_cyfra = Convert.ToChar(65 + y - 1).ToString();
+                     }
+
+                }
+
+                else
+
+
+               if ((702 < podany_numer_kolumny) && (podany_numer_kolumny <= 16384))        /////////////////KOD  DLA TRZECH LITEREK/////////////////
+
+                {///////kod dla trzech literek /////
+
+
+                    x = ((podany_numer_kolumny - 26) / 676);
+                    y = (podany_numer_kolumny - 26) % 676;
+                    pierwsza_cyfra = Convert.ToChar(64 + x).ToString();
+
+
+                   
+
+                   if ((y % 26) == 0)
+                    {
+                        f = (y / 26) - 1;
+                        druga_cyfra = Convert.ToChar(65 + f).ToString();
+                        trzecia_cyfra = Convert.ToChar(65 + 25).ToString();
+                    }
+                    else
+                    {
+                        liczba_2 = podany_numer_kolumny - 26 - (x * 676);//1352 -26-676 = 650
+                        liczba_1 = (liczba_2 + 26) / 26;
+                        liczba_1 = liczba_2 % 26;
+                        druga_cyfra = Convert.ToChar(65 + (liczba_2 / 26)).ToString();
+                        trzecia_cyfra = Convert.ToChar(64 + liczba_1).ToString();
+                     }
+
+                }
+                else
+                {
+                    Console.WriteLine(" Podales zla wartosc kolumny.....podaj właściwą wartosc numeru kolumny");
+                }
+
+                return (pierwsza_cyfra + druga_cyfra + trzecia_cyfra + numer_wiersza.ToString());
+
+            }///////////koniec funkcji konwertera//
+        
+
+
+</code>
+  </pre>              
+
+             
+
+
+
+</body>
+</html>										
+			
